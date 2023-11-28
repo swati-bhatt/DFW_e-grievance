@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>e-Forest(Grievance): Lodge your Grievance</title>
+        <link rel="shortcut icon" href="favicon.png">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" language="javascript" src="JS/JScript.js"></script>
+    <link href="App_Themes/NewStyle.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.8.2.js"></script>
+     <script src="JS/jquery.maskedinput-1.4.1.js" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript">
+     
+
+        function DisableBackButton() {
+            window.history.forward()
+        }
+        DisableBackButton();
+        window.onload = DisableBackButton;
+        window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
+        window.onunload = function () { void (0) }
+    </script>
+       <script language="javascript" type="text/javascript">
+          $(document).ready(function () {
+               $('#txtLongitude').mask("99° 99' 99\" E");
+            $('#txtLatitude').mask("99° 99' 99\" N");
+          })
+
+
+          function SignValidateRefresh() {
+             
+              var rand = document.getElementById("txtrandomno").value;
+            var saltedHash = MD5(rand);
+              document.getElementById("txtrandomno").value = saltedHash;
+          }
+      </script>
+
+</style>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6v5-2uaq_wusHDktM9ILcqIrlPtnZgEk&amp;sensor=false">
+</script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places">
+</script>
+<script type="text/javascript">
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success);
+    } else {
+        alert("Geo Location is not supported on your current browser!");
+    }
+    function success(position) {
+        var lat = position.coords.latitude;
+        var long = position.coords.longitude;
+        var city = position.coords.locality;
+       
+        var myLatlng = new google.maps.LatLng(lat, long);
+        var myOptions = {
+            center: myLatlng,
+            zoom: 12,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            title: "lat: " + lat + " long: " + long
+             
+        });
+
+
+
+        marker.setMap(map);
+        var infowindow = new google.maps.InfoWindow({ content: "<b>User Address</b><br/> Latitude:" + lat + "<br /> Longitude:" + long + "" });
+        txtLatitude.value = lat
+        txtLongitude.value = long
+        infowindow.open(map, marker);
+    }
+</script>
+
+     <script type="text/javascript" language="javascript">
+
+         function specialcharecter() {
+
+             var iChars = "!`@#$%^&*()+=-[]\\\';,./{}|\":<>?~_";
+
+             var data = document.getElementById("txtDescription").value;
+
+             for (var i = 0; i < data.length; i++) {
+
+                 if (iChars.indexOf(data.charAt(i)) != -1) {
+
+                     alert("Your string has special characters. \nThese are not allowed.");
+
+                     document.getElementById("txtDescription").value = "";
+
+                     return false;
+
+                 }
+
+             }
+
+         }
+     </script>
+<script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/55/2/intl/en_gb/common.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/55/2/intl/en_gb/util.js"></script></head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark " style="background-color:#719C27 ;">
+        <div class="container">
+          <a href="index.html" class="navbar-brand mb-0 h1">
+            <img class="d-inline-block align-top" src="tree.png" width="40"
+              height="30">&nbspe-Forest
+          </a>
+          <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler"
+            aria-controls="navbarNav" aria-expandable="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item ms-auto">
+              <a href="login.html" class="nav-link">Reset Form</a>
+            </li>
+            <li class="nav-item ms-auto">
+                <a href="Quick_links.html" class="nav-link">Quick Links</a>
+              </li>
+              <li class="nav-item ms-auto">
+                <a href="contact.html" class="nav-link">Contact Us</a>
+              </li>
+              <li class="nav-item ms-auto">
+                <a href="#" class="nav-link">FAQ's</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <form name="form1" method="post" action="./GrievanceComplaint.aspx" onsubmit="javascript:return WebForm_OnSubmit();" id="form1" class="customform" enctype="multipart/form-data">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTExNTQ1MjgyMzYPZBYCAgMPFgIeB2VuY3R5cGUFE211bHRpcGFydC9mb3JtLWRhdGEWAgIZDxAPFgYeDURhdGFUZXh0RmllbGQFCWRpc3RfbmFtZR4ORGF0YVZhbHVlRmllbGQFCWRpc3RfY29kZR4LXyFEYXRhQm91bmRnZBAVDAhTZWxlY3QtLQVOb3J0aAVTb3V0aARFYXN0BFdlc3QHQ2VudHJhbApOb3J0aCBFYXN0Ck5vcnRoIFdlc3QKU291dGggV2VzdAlOZXcgRGVsaGkJU2hhaGFkYXJhClNvdXRoIEVhc3QVDAEwATEBMgEzATQBNQE2ATcBOAE5AjExAjEyFCsDDGdnZ2dnZ2dnZ2dnZ2RkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYBBQtpYnRuUmVmcmVzaL10alvy21aNXyXxWuURjK7Bs4LXuQD1umgDr2/GtZoy">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=cfldm3Bf2zFF6I-cyGqvXwMqTPv5_yyl9QhtqIwyUfZqpgVtbL1v5aINjHG17WZy6QpqKRoU_kfZNcL6X1AOcW1o2gF5fg0XmBOc-vbNCHU1&amp;t=637811927229275428" type="text/javascript"></script>
+
+
+<script src="/WebResource.axd?d=17DmnKWck889PfgXE-1hbaBBZrPdwqkPqg2c72qmzXzdm8yg9tzUGn9jo5iqycf-w1Ev7YzrpsFDtpxuhizADi6_G_qW3FM8DUH6ZutDPz01&amp;t=637811927229275428" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="548A3E8D">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdACchq4p6c/Bl0zDHhCYPyw+W/ik1EjtVbhmdDWP01L3llVUFkgXZfY8l0p+5uFDSy3re4zc0hjXWfbejBrcXuQ5O0ZdKNz97o+Ro8Owp6ZSjtwYetjG9iuzlcOWuPLP7BVRM2vz4PH8f7Z818+HGDJ7H61kF2JGifl3WoTTeijlO87OoEX4OL5fyhRaZHLOgG2vKiv1531imrwNmvWXeVeiFoelar6PENtkSLpJYlDimYodFxjhz3+Lqc/RKA7GGEaFDB2YfWbjwUYntrwPx36ESFPhUt9Pl0N9VGq2R2yQpZQThkaj2zm/HMgQRsDPBkwIlemzzzAI56YC/KOD2vf06OOLwaPd/ez5Fr6lNhAUXYrUNo5rJNiRtu64F8gyykuBuH8r5HQT2PDC/fAeTF6LMGxMK3vj8YLFv8f+FjImATaTqeFS+6e3YiPQR6d/15RjCay2QXngnkgntdhoD58QpyINOq8wsgkx44WAmAQv3zzAA/G9tyfTX5Fide5PY8Hx04aygE+g8WfqwUUSRhS/gYsgGGiZ+12BJUQWtrRfkLK3fn7gw4w+pzBQTXvTAkYemulv07p3KBbqUi5w+d1Vch9wuW77N7TXCHLndia5HsZqPnR1JXGHWscSP1P0vWV36Sl8x4fbWTE6Cj/DLwzt722U0rdZSeELxAJiTrEr9M8gVA+P6LDZcw+jv5d8dVfCFa3z02QmQnYFjj3wKxfjrPOaW1pQztoQA36D1w/+bXSYFEmRQ172kti3TBEW4ww/EHImI/3FGtx+sAZyD6A9QmKpAp6u3NVwiTf8Ilm9m7H6dV95rzZxJfS4JuZ7W8rFw4xsZTiPOmR8fUnlz9m2AyflqjroiQlt1uvUHaJr97w==">
+</div>
+        <div id="wrapper" class="divwrapper"> 
+            <div id="regform" class="rounddiv">
+                <fieldset id="fsapplicant" style="margin-top: 20px;">
+                    <span style="font-size: 14pt; color:black;">Details of Location to which complaint pertains</span>
+                    <table width="100%">
+
+                        <tbody>
+                            
+                            
+                             <tr>
+                                <td align="left">
+                                    <span style="color: Red">*</span>
+                                    <span>Complaint Type</span>
+                                </td>
+                                <td align="left" colspan="3">
+                                    <table id="rbComplaintType" border="0">
+	<tbody><tr>
+		<td><input id="rbComplaintType_0" type="radio" name="rbComplaintType" value="Tree Offence"><label for="rbComplaintType_0">Tree Offence</label></td><td><input id="rbComplaintType_1" type="radio" name="rbComplaintType" value="Wildlife Offence"><label for="rbComplaintType_1">Wildlife Offence</label></td>
+	</tr>
+</tbody></table>
+                                    <span id="RequiredFieldValidator5" style="color:Red;display:none;"></span>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td align="left">
+                                    <span style="color: Red">*</span>
+                                    <span>Subject</span>
+                                </td>
+                                <td align="left" colspan="3">
+                                    <textarea name="txtSubject" rows="2" cols="20" id="txtSubject" style="width:557px;"></textarea>
+                                     <span id="RequiredFieldValidator6" style="color:Red;display:none;"></span>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td align="left">
+                                    <span style="color: Red">*</span>
+                                    <span>Description</span><span style="font-size: 8pt; color: Red;"><em>(Max 2000 Characters)
+                                                    Please do not use the special character(~, `, !, $, ^, *, {, }, [, ], |, &lt;, &gt;, '', --) for entry</em></span>
+                                </td>
+                                <td align="left" colspan="3">
+                                    <textarea name="txtDescription" rows="5" cols="20" id="txtDescription" title="Only 2000 characters left" onkeyup="return specialcharecter();" style="width:557px;"></textarea>
+                                     <span id="RequiredFieldValidator7" style="color:Red;display:none;"></span>
+                                </td>
+
+                            </tr>
+
+                            <tr></tr>
+                            <tr>
+                                <td align="left">
+                                    <span style="color: Red">*</span>
+                                    <span>Upload Document, if required</span>
+                                </td>
+                                <td align="left" colspan="3">
+                                    <input type="file" name="fupdfFile" id="fupdfFile">
+                                    <span id="RequiredFieldValidator12" style="color:Red;display:none;"></span>
+                            <span id="RegularExpressionValidator1" style="color:Red;display:none;"></span>
+                                    <span style="font-size: 8pt; color: Red;"><em>
+                                                    (Document Size should not be greater than 2MB and should be in PDF/JPEG/JPG format only) To reduce size of Pdf document</em></span>
+                                </td>
+
+                            </tr>
+
+
+                            
+
+                            <tr>
+                                <td colspan="4"><span style="font-size: 14pt; color:black;">Applicant Details</span></td>
+                            </tr>
+                            <tr></tr>
+
+                            <tr>
+                                <td width="15%" align="left">
+                                    <span style="color: Red">*</span>
+                                    <span>First Name</span>
+                                </td>
+                                <td align="left" width="30%">
+                                    <input name="txtFirstName" type="text" maxlength="20" id="txtFirstName" style="width: 250px;">
+                                    <span id="RequiredFieldValidator1" style="color:Red;display:none;"></span>
+                                </td>
+                                <td width="15%" align="left">
+                                    <span style="color: Red">*</span>
+                                    <span>Last Name</span>
+                                </td>
+                                <td align="left" width="30%">
+                                    <input name="txtLastName" type="text" maxlength="20" id="txtLastName" style="width: 200px;">
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td align="left" width="8%">
+                                    <span style="color: Red">*</span>
+                                    <span class="validatorstyles">Gender</span>
+                                </td>
+                                <td align="left">
+                                    <table id="rbGender" border="0">
+	<tbody><tr>
+		<td><input id="rbGender_0" type="radio" name="rbGender" value="M"><label for="rbGender_0">Male</label></td><td><input id="rbGender_1" type="radio" name="rbGender" value="F"><label for="rbGender_1">Female</label></td><td><input id="rbGender_2" type="radio" name="rbGender" value="O"><label for="rbGender_2">Others</label></td>
+	</tr>
+</tbody></table>
+                                    <span id="RequiredFieldValidator2" style="color:Red;display:none;"></span>
+                                </td>
+
+                                 <td width="15%" align="left">
+
+                                    <span style="color: Red">*</span>
+                                    <span>Email</span>
+                                </td>
+                                <td align="left" width="30%">
+                                    <input name="txtEmail" type="text" id="txtEmail" autofill="false" style="width: 200px;">
+                                    <span id="RequiredFieldValidator3" style="color:Red;display:none;"></span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                               
+                                <td align="left" width="8%">
+
+                                    <span style="color: Red">*</span>
+                                    <span>Contact No.</span>
+                                </td>
+                                <td align="left">
+                                    <input name="txtContactNo" type="text" id="txtContactNo" autofill="false" style="width: 200px;">
+                                    <span id="RequiredFieldValidator4" style="color:Red;display:none;"></span>
+                                     <a id="lnbSendotp" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("lnbSendotp", "", true, "I1", "", false, true))'>Send OTP</a>
+                                    
+                                </td>
+                                 <td align="left" width="8%">
+
+                                    <span style="color: Red">*</span>
+                                    <span>OTP.</span>
+                                </td>
+                                <td align="left">
+                                    
+                                   <input name="txtOTP" type="text" onchange="javascript:setTimeout('__doPostBack(\'txtOTP\',\'\')', 0)" onkeypress="if (WebForm_TextBoxKeyHandler(event) == false) return false;" id="txtOTP" disabled="disabled" autofill="false" style="width: 200px;">
+                                            <span id="RequiredFieldValidator13" style="color:Red;display:none;"></span>
+                                    
+                                </td>
+                            </tr>
+
+                           
+                            
+                            <tr>
+                                <td width="15%" align="left">
+
+                                    <span style="color: Red">*</span>
+                                    <span>District</span>
+                                </td>
+                                <td align="left" width="30%">
+                                    <select name="ddDistrict" id="ddDistrict" style="width: 255px;">
+	<option value="0">Select--</option>
+	<option value="1">North</option>
+	<option value="2">South</option>
+	<option value="3">East</option>
+	<option value="4">West</option>
+	<option value="5">Central</option>
+	<option value="6">North East</option>
+	<option value="7">North West</option>
+	<option value="8">South West</option>
+	<option value="9">New Delhi</option>
+	<option value="11">Shahadara</option>
+	<option value="12">South East</option>
+
+</select>
+                                    <span id="RequiredFieldValidator10" style="color:Red;display:none;"></span>
+                                </td>
+                                <td align="left" width="8%">
+                                    <span style="color: Red">*</span>
+                                    <span>Pincode</span>
+                                </td>
+                                <td align="left">
+                                    <input name="txtPincode" type="text" maxlength="6" id="txtPincode" autofill="false" autocomplete="off" style="width: 200px;">
+                                     <span id="RequiredFieldValidator8" style="color:Red;display:none;"></span>
+                                    <span id="revdept1" style="color:Red;display:none;"></span>
+                                    <span id="RegularExpressionValidatorPIN" style="color:Red;display:none;"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left">
+                                    <span style="color: Red">*</span>
+                                    <span>Address</span>
+                                </td>
+                                <td align="left" colspan="3">
+                                    <textarea name="txtAddress" rows="2" cols="20" id="txtAddress" style="width:557px;"></textarea>
+                                    <span id="RequiredFieldValidator9" style="color:Red;display:none;"></span>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td width="15%" align="left">
+                                    <span>Latitude</span>
+                                </td>
+                                <td align="left" width="30%">
+                                    <input name="txtLatitude" type="text" id="txtLatitude" style="width: 250px;">
+
+                                </td>
+                                <td align="left" width="8%">
+                                    <span>Longitude</span>
+                                </td>
+                                 
+                                    <input name="txtLongitude" type="text" id="txtLongitude" style="width: 200px;">
+
+                                </td>
+                            </tr>
+                            <tr>
+                            <td align="left">
+                                <span id="lbl">Visual Code</span>
+                            </td>
+                            <td valign="top" align="left">
+                                <img width="150" height="50" alt="Visual verification" title="Please enter the security code as shown in the image." src="JpegImage_CS.aspx?r=f00abbbebca04d03aeac86394c1aa1c3" vspace="5" tabindex="-1">
+                                &nbsp;&nbsp;
+                            <input type="image" name="ibtnRefresh" id="ibtnRefresh" tabindex="-1" title="Click here to load a new Image" src="images/refresh1.png" onclick="return SignValidateRefresh();WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ibtnRefresh&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" style="border-width:0px;">
+                            </td>
+                            <td align="left">
+                                <span style="color: Red">*</span>Type the code shown
+                            </td>
+                            <td align="left">
+                                <input name="txtCode" type="text" maxlength="10" id="txtCode" title="Enter Above Characters in the Image" oncopy="return false" oncut="return false" onpaste="return false" autocomplete="off">
+                                <span id="RFVCaptcha" style="color:Red;display:none;"></span>
+                            </td>
+                        </tr>
+
+                            <tr>
+                                <td align="center" colspan="4">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <input type="submit" name="btnSubmit" value="Submit" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnSubmit&quot;, &quot;&quot;, true, &quot;I&quot;, &quot;&quot;, false, false))" id="btnSubmit" class="newsmallbuttonstyle">
+                                    <div id="valsum" style="color:Red;display:none;">
+
+</div>
+                                    <div id="ValidationSummary1" style="color:Red;display:none;">
+
+</div>
+                   
+                                       
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+                <br>
+               
+                <div id="map_canvas" style="width: 50px; height: 40px; display:none"></div>
+            </div>
+            <input type="hidden" name="txtrandomno" id="txtrandomno">
+            <input type="hidden" name="hdCurrentYear" id="hdCurrentYear">
+            <input type="hidden" name="hdmob" id="hdmob">
+            <input type="hidden" name="hdNo" id="hdNo">
+        </div>
+
+        
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("valsum"), document.getElementById("ValidationSummary1"));
+var Page_Validators =  new Array(document.getElementById("RequiredFieldValidator5"), document.getElementById("RequiredFieldValidator6"), document.getElementById("RequiredFieldValidator7"), document.getElementById("RequiredFieldValidator12"), document.getElementById("RegularExpressionValidator1"), document.getElementById("RequiredFieldValidator1"), document.getElementById("RequiredFieldValidator2"), document.getElementById("RequiredFieldValidator3"), document.getElementById("RequiredFieldValidator4"), document.getElementById("RequiredFieldValidator13"), document.getElementById("RequiredFieldValidator10"), document.getElementById("RequiredFieldValidator8"), document.getElementById("revdept1"), document.getElementById("RegularExpressionValidatorPIN"), document.getElementById("RequiredFieldValidator9"), document.getElementById("RFVCaptcha"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var RequiredFieldValidator5 = document.all ? document.all["RequiredFieldValidator5"] : document.getElementById("RequiredFieldValidator5");
+RequiredFieldValidator5.controltovalidate = "rbComplaintType";
+RequiredFieldValidator5.errormessage = "Complaint Type is required.";
+RequiredFieldValidator5.display = "None";
+RequiredFieldValidator5.validationGroup = "I";
+RequiredFieldValidator5.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator5.initialvalue = "";
+var RequiredFieldValidator6 = document.all ? document.all["RequiredFieldValidator6"] : document.getElementById("RequiredFieldValidator6");
+RequiredFieldValidator6.controltovalidate = "txtSubject";
+RequiredFieldValidator6.errormessage = "Subject is required.";
+RequiredFieldValidator6.display = "None";
+RequiredFieldValidator6.validationGroup = "I";
+RequiredFieldValidator6.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator6.initialvalue = "";
+var RequiredFieldValidator7 = document.all ? document.all["RequiredFieldValidator7"] : document.getElementById("RequiredFieldValidator7");
+RequiredFieldValidator7.controltovalidate = "txtDescription";
+RequiredFieldValidator7.errormessage = "Description is required.";
+RequiredFieldValidator7.display = "None";
+RequiredFieldValidator7.validationGroup = "I";
+RequiredFieldValidator7.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator7.initialvalue = "";
+var RequiredFieldValidator12 = document.all ? document.all["RequiredFieldValidator12"] : document.getElementById("RequiredFieldValidator12");
+RequiredFieldValidator12.controltovalidate = "fupdfFile";
+RequiredFieldValidator12.errormessage = "Required";
+RequiredFieldValidator12.display = "None";
+RequiredFieldValidator12.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator12.initialvalue = "";
+var RegularExpressionValidator1 = document.all ? document.all["RegularExpressionValidator1"] : document.getElementById("RegularExpressionValidator1");
+RegularExpressionValidator1.controltovalidate = "fupdfFile";
+RegularExpressionValidator1.errormessage = "Please select a valid PDF File.";
+RegularExpressionValidator1.display = "None";
+RegularExpressionValidator1.validationGroup = "I";
+RegularExpressionValidator1.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+RegularExpressionValidator1.validationexpression = "([a-zA-Z0-9\\s_\\\\.\\-:])+(.pdf|.PDF)$";
+var RequiredFieldValidator1 = document.all ? document.all["RequiredFieldValidator1"] : document.getElementById("RequiredFieldValidator1");
+RequiredFieldValidator1.controltovalidate = "txtFirstName";
+RequiredFieldValidator1.errormessage = "First Name is required.";
+RequiredFieldValidator1.display = "None";
+RequiredFieldValidator1.validationGroup = "I";
+RequiredFieldValidator1.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator1.initialvalue = "";
+var RequiredFieldValidator2 = document.all ? document.all["RequiredFieldValidator2"] : document.getElementById("RequiredFieldValidator2");
+RequiredFieldValidator2.controltovalidate = "rbGender";
+RequiredFieldValidator2.errormessage = "Gender is required.";
+RequiredFieldValidator2.display = "None";
+RequiredFieldValidator2.validationGroup = "I";
+RequiredFieldValidator2.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator2.initialvalue = "";
+var RequiredFieldValidator3 = document.all ? document.all["RequiredFieldValidator3"] : document.getElementById("RequiredFieldValidator3");
+RequiredFieldValidator3.controltovalidate = "txtEmail";
+RequiredFieldValidator3.errormessage = "Email is required.";
+RequiredFieldValidator3.display = "None";
+RequiredFieldValidator3.validationGroup = "I";
+RequiredFieldValidator3.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator3.initialvalue = "";
+var RequiredFieldValidator4 = document.all ? document.all["RequiredFieldValidator4"] : document.getElementById("RequiredFieldValidator4");
+RequiredFieldValidator4.controltovalidate = "txtContactNo";
+RequiredFieldValidator4.errormessage = "Contact No. is required.";
+RequiredFieldValidator4.display = "None";
+RequiredFieldValidator4.validationGroup = "I1";
+RequiredFieldValidator4.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator4.initialvalue = "";
+var RequiredFieldValidator13 = document.all ? document.all["RequiredFieldValidator13"] : document.getElementById("RequiredFieldValidator13");
+RequiredFieldValidator13.controltovalidate = "txtOTP";
+RequiredFieldValidator13.errormessage = "Please Enterd OTP No.";
+RequiredFieldValidator13.display = "None";
+RequiredFieldValidator13.validationGroup = "I";
+RequiredFieldValidator13.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator13.initialvalue = "";
+var RequiredFieldValidator10 = document.all ? document.all["RequiredFieldValidator10"] : document.getElementById("RequiredFieldValidator10");
+RequiredFieldValidator10.controltovalidate = "ddDistrict";
+RequiredFieldValidator10.errormessage = "District is required.";
+RequiredFieldValidator10.display = "None";
+RequiredFieldValidator10.validationGroup = "I";
+RequiredFieldValidator10.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator10.initialvalue = "0";
+var RequiredFieldValidator8 = document.all ? document.all["RequiredFieldValidator8"] : document.getElementById("RequiredFieldValidator8");
+RequiredFieldValidator8.controltovalidate = "txtPincode";
+RequiredFieldValidator8.errormessage = "Pincode is required.";
+RequiredFieldValidator8.display = "None";
+RequiredFieldValidator8.validationGroup = "I";
+RequiredFieldValidator8.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator8.initialvalue = "";
+var revdept1 = document.all ? document.all["revdept1"] : document.getElementById("revdept1");
+revdept1.controltovalidate = "txtPincode";
+revdept1.errormessage = "Invalid characters in Pin";
+revdept1.display = "None";
+revdept1.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+revdept1.validationexpression = "^[0-9]*$";
+var RegularExpressionValidatorPIN = document.all ? document.all["RegularExpressionValidatorPIN"] : document.getElementById("RegularExpressionValidatorPIN");
+RegularExpressionValidatorPIN.controltovalidate = "txtPincode";
+RegularExpressionValidatorPIN.errormessage = "Enter Minimum 6 Length in Pin";
+RegularExpressionValidatorPIN.display = "None";
+RegularExpressionValidatorPIN.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+RegularExpressionValidatorPIN.validationexpression = ".{6}.*";
+var RequiredFieldValidator9 = document.all ? document.all["RequiredFieldValidator9"] : document.getElementById("RequiredFieldValidator9");
+RequiredFieldValidator9.controltovalidate = "txtAddress";
+RequiredFieldValidator9.errormessage = "Address is required.";
+RequiredFieldValidator9.display = "None";
+RequiredFieldValidator9.validationGroup = "I";
+RequiredFieldValidator9.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator9.initialvalue = "";
+var RFVCaptcha = document.all ? document.all["RFVCaptcha"] : document.getElementById("RFVCaptcha");
+RFVCaptcha.controltovalidate = "txtCode";
+RFVCaptcha.focusOnError = "t";
+RFVCaptcha.errormessage = "Enter Security Code.";
+RFVCaptcha.display = "None";
+RFVCaptcha.validationGroup = "I";
+RFVCaptcha.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RFVCaptcha.initialvalue = "";
+var valsum = document.all ? document.all["valsum"] : document.getElementById("valsum");
+valsum.showmessagebox = "True";
+valsum.showsummary = "False";
+valsum.validationGroup = "I1";
+var ValidationSummary1 = document.all ? document.all["ValidationSummary1"] : document.getElementById("ValidationSummary1");
+ValidationSummary1.showmessagebox = "True";
+ValidationSummary1.showsummary = "False";
+ValidationSummary1.validationGroup = "I";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        //]]>
+</script>
+</form>
+
+
+</body></html>
