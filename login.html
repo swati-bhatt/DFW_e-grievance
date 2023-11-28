@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-Forest(Grievance): Login </title>
+    <link rel="stylesheet" href="styleslogin.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.8.2.js"></script>
+    <link rel="shortcut icon" href="favicon.png">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<script src="captchanew.js"></script>
+    <body onload="createCaptcha()">
+
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark " style="background-color:#719C27 ;">
+        <div class="container">
+          <a href="index.html" class="navbar-brand mb-0 h1">
+            <img class="d-inline-block align-top" src="tree.png" width="40"
+              height="30">&nbspe-Forest
+          </a>
+          <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler"
+            aria-controls="navbarNav" aria-expandable="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item ms-auto">
+              <a href="login.html" class="nav-link">Reset Form</a>
+            </li>
+            <li class="nav-item ms-auto">
+                <a href="Quick_links.html" class="nav-link">Quick Links</a>
+              </li>
+              <li class="nav-item ms-auto">
+                <a href="contact.html" class="nav-link">Contact Us</a>
+              </li>
+              <li class="nav-item ms-auto">
+                <a href="#" class="nav-link">FAQ's</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+    <div class="containers">
+        <div class="title">Login</div>
+        <form action="#">
+            <div class="user-details">
+
+                <div class="input-box">
+                    <span class="details" >UserID</span>
+                    <input type="text"  placeholder="Enter your username" required>
+
+                </div>
+                <div class="input-box">
+                    <span class="details">Password</span>
+                    <input type="password" placeholder="Enter your number" required>
+                    
+            </div>
+            
+            <div>
+                
+                <form onsunmit="validateCaptcha()">
+                  <div id="captcha" style= "display: inline; margin-right: 90px; margin-left:80px;">  </div>
+                  <input type="text" placeholder="Captcha" id="cpatchaTextBox" style = "margin-bottom: 15px;"/>
+                  <table class="tables">
+                    <tr><td><a href="#" style=" margin-left: 250px;" class="linktext">Forgot Password?</a></td></tr>
+                    <tr><td><a href="Register.html" style=" margin-left: 240px;" class="linktext">Create New Account</a></td></tr>
+            </table>
+                  <div class="button">
+                <input type="submit" value="Login">
+                
+            </div>
+                </form>
+            </div>
+                
+            </div>
+        </form>
+    </div>
+    <footer class="foot">
+        <div>
+          <h5>Register Grievances/Green Helpline You can call on 1800118600</h3>
+        </div>
+      </footer>
+</body>
+</html>
