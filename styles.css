@@ -213,7 +213,10 @@ h2 a{
     text-decoration: none;
 }
 h2 a:hover{
-    color: #658729;
+    color: #a4cd5e;
+}
+h3 a:hover{
+    color: #acda5b;
 }
 
 /* .pra p{
