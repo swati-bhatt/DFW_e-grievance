@@ -274,23 +274,24 @@ h3 a:hover{
     background-color:#8ac02e;
     height: 35px;
 }
-.topbar h1{
+.topbar h2{
     font-size: 22px;
-    text-align: center;
+    text-align:center;
     color: white;
+    display: inline-flex;
 }
-.header{
+/* .header{
     background-image: url(bg.jpeg);
-}
-.headimg1{
-    width:400px;
+} */
+/* .headimg1{
+    width: auto;
     height:260px;
     float: left,bottom;
     left:10%;
 }
 
 .headimg2{
-    width: autofit;
+    width: auto;
     height:200px;
     float: right,bottom;
     margin-top:40px;
@@ -303,7 +304,36 @@ h3 a:hover{
     text-align: center;
     margin-right: 200px;
     margin-left: 80px;
-}
+} */
+#header {
+    height:250px;
+    background-image: url(bg.jpeg);
+    /* margin-bottom: 26px; */
+    }
+   #logo2 {
+    width:auto;
+    height:240px;
+    padding:60px 20px 0 0px;
+    float:right;
+    }
+   #logo {
+    width: auto;
+    height:270px;
+    padding:20px 0 0 20px;
+    float: left;
+    }
+
+   #company-address {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #658729;
+    padding-top:120px;
+    text-align:center;
+    }
+
+   #company-address p {
+    font-size: 130%;
+    }
+
 .icons{
     
     height: 120px;
