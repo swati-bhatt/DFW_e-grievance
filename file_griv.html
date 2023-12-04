@@ -6,6 +6,7 @@
         <title>e-Forest(Grievance): Lodge your Grievance</title>
         <link rel="shortcut icon" href="favicon.png">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="stylesfile_griv.css">
     <script type="text/javascript" language="javascript" src="JS/JScript.js"></script>
     <link href="App_Themes/NewStyle.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.8.2.js"></script>
@@ -21,6 +22,10 @@
         window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
         window.onunload = function () { void (0) }
     </script>
+    <style type="text/css">
+        table    { border-radius: 20px; background:linear-gradient(135deg, #b5ecb9, #8ed173);padding: 10px 10px 10px 10px; color:black; }
+        
+    </style>
        <script language="javascript" type="text/javascript">
           $(document).ready(function () {
                $('#txtLongitude').mask("99° 99' 99\" E");
@@ -37,6 +42,7 @@
       </script>
 
 </style>
+
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6v5-2uaq_wusHDktM9ILcqIrlPtnZgEk&amp;sensor=false">
 </script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places">
@@ -100,7 +106,9 @@
          }
      </script>
 <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/55/2/intl/en_gb/common.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/55/2/intl/en_gb/util.js"></script></head>
-<body>
+<script src="captchanew.js"></script>
+<body onload="createCaptcha()">
+
     <nav class="navbar fixed-top navbar-expand-sm navbar-dark " style="background-color:#719C27 ;">
         <div class="container">
           <a href="index.html" class="navbar-brand mb-0 h1">
@@ -114,7 +122,7 @@
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
             <li class="nav-item ms-auto">
-              <a href="login.html" class="nav-link">Reset Form</a>
+              <a href="file_griv.html" class="nav-link">Reset Form</a>
             </li>
             <li class="nav-item ms-auto">
                 <a href="Quick_links.html" class="nav-link">Quick Links</a>
@@ -174,46 +182,50 @@ return true;
 </div>
         <div id="wrapper" class="divwrapper"> 
             <div id="regform" class="rounddiv">
-                <fieldset id="fsapplicant" style="margin-top: 20px;">
-                    <span style="font-size: 14pt; color:black;">Details of Location to which complaint pertains</span>
-                    <table width="100%">
-
-                        <tbody>
-                            
-                            
-                             <tr>
-                                <td align="left">
-                                    <span style="color: Red">*</span>
-                                    <span>Complaint Type</span>
-                                </td>
-                                <td align="left" colspan="3">
-                                    <table id="rbComplaintType" border="0">
-	<tbody><tr>
-		<td><input id="rbComplaintType_0" type="radio" name="rbComplaintType" value="Tree Offence"><label for="rbComplaintType_0">Tree Offence</label></td><td><input id="rbComplaintType_1" type="radio" name="rbComplaintType" value="Wildlife Offence"><label for="rbComplaintType_1">Wildlife Offence</label></td>
-	</tr>
-</tbody></table>
-                                    <span id="RequiredFieldValidator5" style="color:Red;display:none;"></span>
+                <fieldset id="fsapplicant" style=" margin-top: 80px;margin-right: 130px;margin-bottom: 80px;margin-left: 130px;">
+                    <span style="font-size: 25px; text-align: centre; color:black;">Grievance (Register complaints regarding cutting/damage of tree and violation of DPTA and FCA)</span>
+                    
+                                <span id="RequiredFieldValidator5" style="color:Red;display:none;"></span>
                                 </td>
 
                             </tr>
+                            
+                            <table width="100%">
+                                <tr><td colspan="4"><span style="font-size: 14pt; color:black;">Details of Location to which complaint pertains</span></td></tr>
+                                <tbody>
+                                    
+                                    
+                                     <tr>
+                                        <td  >
+                                            <span style="color: Red">*</span>
+                                            <span>Complaint Type</span>
+                                        </td>
+                                        <td   colspan="3">
+                                            <table id="rbComplaintType"    >
+            <tbody><tr>
+                <td><input id="rbComplaintType_0" type="radio" name="rbComplaintType" value="Tree Offence"><label for="rbComplaintType_0">Tree Offence</label></td><td><input id="rbComplaintType_1" type="radio" name="rbComplaintType" value="Wildlife Offence"><label for="rbComplaintType_1">Wildlife Offence</label></td>
+            </tr>
+        </tbody>
+        
+        </table >                    
                             <tr>
-                                <td align="left">
+                                <td >
                                     <span style="color: Red">*</span>
                                     <span>Subject</span>
                                 </td>
-                                <td align="left" colspan="3">
+                                <td   colspan="3">
                                     <textarea name="txtSubject" rows="2" cols="20" id="txtSubject" style="width:557px;"></textarea>
                                      <span id="RequiredFieldValidator6" style="color:Red;display:none;"></span>
                                 </td>
 
                             </tr>
                             <tr>
-                                <td align="left">
+                                <td  >
                                     <span style="color: Red">*</span>
                                     <span>Description</span><span style="font-size: 8pt; color: Red;"><em>(Max 2000 Characters)
                                                     Please do not use the special character(~, `, !, $, ^, *, {, }, [, ], |, &lt;, &gt;, '', --) for entry</em></span>
                                 </td>
-                                <td align="left" colspan="3">
+                                <td   colspan="3">
                                     <textarea name="txtDescription" rows="5" cols="20" id="txtDescription" title="Only 2000 characters left" onkeyup="return specialcharecter();" style="width:557px;"></textarea>
                                      <span id="RequiredFieldValidator7" style="color:Red;display:none;"></span>
                                 </td>
@@ -222,53 +234,51 @@ return true;
 
                             <tr></tr>
                             <tr>
-                                <td align="left">
+                                <td  >
                                     <span style="color: Red">*</span>
                                     <span>Upload Document, if required</span>
                                 </td>
-                                <td align="left" colspan="3">
+                                <td   colspan="3">
                                     <input type="file" name="fupdfFile" id="fupdfFile">
                                     <span id="RequiredFieldValidator12" style="color:Red;display:none;"></span>
                             <span id="RegularExpressionValidator1" style="color:Red;display:none;"></span>
                                     <span style="font-size: 8pt; color: Red;"><em>
-                                                    (Document Size should not be greater than 2MB and should be in PDF/JPEG/JPG format only) To reduce size of Pdf document</em></span>
+                                                    (Document Size should not be greater than 2MB and should be in PDF/JPEG/JPG format only)</em></span>
                                 </td>
 
                             </tr>
 
 
-                            
-
                             <tr>
-                                <td colspan="4"><span style="font-size: 14pt; color:black;">Applicant Details</span></td>
+                                <td  colspan="4"><span style="font-size: 14pt; color:black;">Applicant Details</span></td>
                             </tr>
                             <tr></tr>
 
                             <tr>
-                                <td width="15%" align="left">
+                                <td width="15%"  >
                                     <span style="color: Red">*</span>
                                     <span>First Name</span>
                                 </td>
-                                <td align="left" width="30%">
+                                <td   width="30%">
                                     <input name="txtFirstName" type="text" maxlength="20" id="txtFirstName" style="width: 250px;">
                                     <span id="RequiredFieldValidator1" style="color:Red;display:none;"></span>
                                 </td>
-                                <td width="15%" align="left">
+                                <td width="15%"  >
                                     <span style="color: Red">*</span>
                                     <span>Last Name</span>
                                 </td>
-                                <td align="left" width="30%">
+                                <td   width="30%">
                                     <input name="txtLastName" type="text" maxlength="20" id="txtLastName" style="width: 200px;">
                                 </td>
 
                             </tr>
                             <tr>
-                                <td align="left" width="8%">
+                                <td   width="8%">
                                     <span style="color: Red">*</span>
                                     <span class="validatorstyles">Gender</span>
                                 </td>
-                                <td align="left">
-                                    <table id="rbGender" border="0">
+                                <td  >
+                                    <table id="rbGender"    >
 	<tbody><tr>
 		<td><input id="rbGender_0" type="radio" name="rbGender" value="M"><label for="rbGender_0">Male</label></td><td><input id="rbGender_1" type="radio" name="rbGender" value="F"><label for="rbGender_1">Female</label></td><td><input id="rbGender_2" type="radio" name="rbGender" value="O"><label for="rbGender_2">Others</label></td>
 	</tr>
@@ -276,12 +286,12 @@ return true;
                                     <span id="RequiredFieldValidator2" style="color:Red;display:none;"></span>
                                 </td>
 
-                                 <td width="15%" align="left">
+                                 <td width="15%"  >
 
                                     <span style="color: Red">*</span>
                                     <span>Email</span>
                                 </td>
-                                <td align="left" width="30%">
+                                <td   width="30%">
                                     <input name="txtEmail" type="text" id="txtEmail" autofill="false" style="width: 200px;">
                                     <span id="RequiredFieldValidator3" style="color:Red;display:none;"></span>
                                 </td>
@@ -289,23 +299,23 @@ return true;
 
                             <tr>
                                
-                                <td align="left" width="8%">
+                                <td   width="8%">
 
                                     <span style="color: Red">*</span>
                                     <span>Contact No.</span>
                                 </td>
-                                <td align="left">
+                                <td  >
                                     <input name="txtContactNo" type="text" id="txtContactNo" autofill="false" style="width: 200px;">
                                     <span id="RequiredFieldValidator4" style="color:Red;display:none;"></span>
                                      <a id="lnbSendotp" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("lnbSendotp", "", true, "I1", "", false, true))'>Send OTP</a>
                                     
                                 </td>
-                                 <td align="left" width="8%">
+                                 <td   width="8%">
 
                                     <span style="color: Red">*</span>
                                     <span>OTP.</span>
                                 </td>
-                                <td align="left">
+                                <td  >
                                     
                                    <input name="txtOTP" type="text" onchange="javascript:setTimeout('__doPostBack(\'txtOTP\',\'\')', 0)" onkeypress="if (WebForm_TextBoxKeyHandler(event) == false) return false;" id="txtOTP" disabled="disabled" autofill="false" style="width: 200px;">
                                             <span id="RequiredFieldValidator13" style="color:Red;display:none;"></span>
@@ -316,12 +326,12 @@ return true;
                            
                             
                             <tr>
-                                <td width="15%" align="left">
+                                <td width="15%"  >
 
                                     <span style="color: Red">*</span>
                                     <span>District</span>
                                 </td>
-                                <td align="left" width="30%">
+                                <td   width="30%">
                                     <select name="ddDistrict" id="ddDistrict" style="width: 255px;">
 	<option value="0">Select--</option>
 	<option value="1">North</option>
@@ -339,11 +349,11 @@ return true;
 </select>
                                     <span id="RequiredFieldValidator10" style="color:Red;display:none;"></span>
                                 </td>
-                                <td align="left" width="8%">
+                                <td   width="8%">
                                     <span style="color: Red">*</span>
                                     <span>Pincode</span>
                                 </td>
-                                <td align="left">
+                                <td  >
                                     <input name="txtPincode" type="text" maxlength="6" id="txtPincode" autofill="false" autocomplete="off" style="width: 200px;">
                                      <span id="RequiredFieldValidator8" style="color:Red;display:none;"></span>
                                     <span id="revdept1" style="color:Red;display:none;"></span>
@@ -351,56 +361,56 @@ return true;
                                 </td>
                             </tr>
                             <tr>
-                                <td align="left">
+                                <td  >
                                     <span style="color: Red">*</span>
                                     <span>Address</span>
                                 </td>
-                                <td align="left" colspan="3">
+                                <td   colspan="3">
                                     <textarea name="txtAddress" rows="2" cols="20" id="txtAddress" style="width:557px;"></textarea>
                                     <span id="RequiredFieldValidator9" style="color:Red;display:none;"></span>
                                 </td>
 
                             </tr>
                             <tr>
-                                <td width="15%" align="left">
-                                    <span>Latitude</span>
+                
+                                <td width="15%"  >
+                                    <span >Latitude</span>
                                 </td>
-                                <td align="left" width="30%">
+                                <td   colspan="3">
                                     <input name="txtLatitude" type="text" id="txtLatitude" style="width: 250px;">
-
                                 </td>
-                                <td align="left" width="8%">
+                            </tr>
+                            <tr>
+                                <td width="15%"  >
                                     <span>Longitude</span>
                                 </td>
-                                 
-                                    <input name="txtLongitude" type="text" id="txtLongitude" style="width: 200px;">
+                                <td   colspan="3">
+                                    <input name="txtlo" type="text" id="txtLongitude" style="width: 250px;">
 
                                 </td>
                             </tr>
                             <tr>
-                            <td align="left">
+                            <td  >
                                 <span id="lbl">Visual Code</span>
                             </td>
-                            <td valign="top" align="left">
-                                <img width="150" height="50" alt="Visual verification" title="Please enter the security code as shown in the image." src="JpegImage_CS.aspx?r=f00abbbebca04d03aeac86394c1aa1c3" vspace="5" tabindex="-1">
-                                &nbsp;&nbsp;
-                            <input type="image" name="ibtnRefresh" id="ibtnRefresh" tabindex="-1" title="Click here to load a new Image" src="images/refresh1.png" onclick="return SignValidateRefresh();WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ibtnRefresh&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" style="border-width:0px;">
+                            <td colspan="3">
+                                <div>
+                                    <form onsunmit="validateCaptcha()">
+                                      <div id="captcha" style= "display: inline; margin-right: 0px; margin-left:0px;">  </div>
+                                      <input type="text" placeholder="Enter Visual code" id="cpatchaTextBox" style = "margin-bottom: 15px;"/>
+                                </div>
+                                    </form>
+                                </div>
                             </td>
-                            <td align="left">
-                                <span style="color: Red">*</span>Type the code shown
-                            </td>
-                            <td align="left">
-                                <input name="txtCode" type="text" maxlength="10" id="txtCode" title="Enter Above Characters in the Image" oncopy="return false" oncut="return false" onpaste="return false" autocomplete="off">
-                                <span id="RFVCaptcha" style="color:Red;display:none;"></span>
-                            </td>
+                           
                         </tr>
 
                             <tr>
-                                <td align="center" colspan="4">
+                                <td    colspan="4">
                                     <br>
                                     <br>
                                     <br>
-                                    <input type="submit" name="btnSubmit" value="Submit" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnSubmit&quot;, &quot;&quot;, true, &quot;I&quot;, &quot;&quot;, false, false))" id="btnSubmit" class="newsmallbuttonstyle">
+                                    <input type="submit" name="btnSubmit" value="Submit" >
                                     <div id="valsum" style="color:Red;display:none;">
 
 </div>
@@ -576,6 +586,12 @@ function ValidatorOnSubmit() {
         //]]>
 </script>
 </form>
+
+<footer class="foot">
+    <div>
+      <h5>Register Grievances/Green Helpline You can call on 1800118600</h3>
+    </div>
+  </footer>
 
 
 </body></html>
